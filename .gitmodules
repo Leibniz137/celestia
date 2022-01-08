@@ -1,0 +1,3 @@
+[submodule "submodules/celestiaorg/celestia-node"]
+	path = submodules/celestiaorg/celestia-node
+	url = git@github.com:celestiaorg/celestia-node.git
