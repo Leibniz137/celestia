@@ -1,20 +1,22 @@
-FROM golang:1.17 as builder
+FROM golang:1.17
 RUN apt update && \
     apt install make bash
-ENV HOME /celestia-node
-COPY / ${HOME}
-WORKDIR ${HOME}
-RUN env GOOS=linux GOARCH=amd64 make build
+COPY submodules/celestiaorg/celestia-node/ /root/celestia-node/
+COPY submodules/celestiaorg/celestia-app/ /root/celestia-app/
 
-FROM ubuntu
+WORKDIR /root/celestia-node
+RUN env GOOS=linux GOARCH=amd64 make install
+
+WORKDIR /root/celestia-app
+RUN env GOOS=linux GOARCH=amd64 make install
+
 ENV NODE_TYPE full
 
 COPY docker/entrypoint.sh /
-
-# Copy in the binary
-COPY --from=builder /celestia-node/celestia /
+RUN chmod 0755 /entrypoint.sh
 
 EXPOSE 2121
 
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["celestia"]
+ENTRYPOINT ["celestia-appd"]
+CMD ["start"]
+WORKDIR /root/
