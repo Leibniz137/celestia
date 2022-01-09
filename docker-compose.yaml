@@ -1,0 +1,10 @@
+version: "3.9"
+   
+services:
+  node:
+    # entrypoint: /bin/bash
+    image: celestia-node:v0.1.1 
+    volumes:
+      - ./.celestia-app:/root/.celestia-app
+    ports:
+      - "2121:2121"
