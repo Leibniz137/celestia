@@ -1,3 +1,9 @@
 [submodule "submodules/celestiaorg/celestia-node"]
 	path = submodules/celestiaorg/celestia-node
 	url = git@github.com:celestiaorg/celestia-node.git
+[submodule "submodules/celestiaorg/networks"]
+	path = submodules/celestiaorg/networks
+	url = https://github.com/celestiaorg/networks.git
+[submodule "submodules/celestiaorg/celestia-app"]
+	path = submodules/celestiaorg/celestia-app
+	url = https://github.com/celestiaorg/celestia-app.git
