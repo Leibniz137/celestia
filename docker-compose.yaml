@@ -2,8 +2,9 @@ version: "3.9"
    
 services:
   node:
-    # entrypoint: /bin/bash
-    image: celestia-node:v0.1.1 
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
     volumes:
       - ./.celestia-app:/root/.celestia-app
     ports:
